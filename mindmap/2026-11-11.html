@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="6 条资讯线汇总今天各 bot 和旺财早报的输出（AI大拿 今天没有输出，暂未收录）。点主题展开要点，点要点看详情、原图和来源。">
+<title>每日 Bot 资讯脑图 2026-11-11</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1a1a1a;
+    --muted: #5c5c5c;
+    --faint: #5e5e5e;
+    --line: #e6e6e6;
+    --bg: #ffffff;
+    --soft: #f5f5f5;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+  a { color: #0b57d0; }
+  a:hover { color: #0842a0; }
+  button, input { font-family: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .wrap {
+    width: min(880px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 32px 0 80px;
+  }
+  .date {
+    margin: 0 0 10px;
+    font-size: 13px;
+    letter-spacing: .08em;
+    color: var(--muted);
+  }
+  h1 {
+    margin: 0 0 14px;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.22;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .nowrap { white-space: nowrap; }
+  .summary {
+    margin: 0;
+    max-width: 68ch;
+    color: #2c2c2c;
+  }
+  .section-label {
+    margin: 40px 0 12px;
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: .12em;
+    color: var(--muted);
+  }
+  .top-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .top-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    min-height: 168px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .top-card:hover { border-color: #111; }
+  .rank {
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--faint);
+  }
+  .top-t { font-size: 16px; font-weight: 680; line-height: 1.4; }
+  .top-s { font-size: 13px; line-height: 1.5; color: var(--muted); }
+  .top-go {
+    margin-top: auto;
+    font-size: 13px;
+    border-bottom: 1px solid #111;
+    line-height: 1.4;
+  }
+  .map-bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-top: 40px;
+  }
+  .map-bar .section-label { margin: 0; }
+  .text-btn {
+    border: 0;
+    background: transparent;
+    padding: 8px 0;
+    min-height: 44px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .tree {
+    margin-top: 14px;
+    padding: 4px 0 4px 22px;
+    border-left: 2px solid #ececec;
+  }
+  .root {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 18px -22px;
+    padding: 10px 16px;
+    max-width: calc(100% + 22px);
+    border: 1.5px solid #111;
+    border-radius: 16px;
+    background: #fff;
+    font-weight: 700;
+  }
+  .root-mark {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #111;
+    flex: none;
+  }
+  .topic { position: relative; margin: 0 0 12px; }
+  .topic::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 28px;
+    width: 22px;
+    height: 2px;
+    background: var(--branch, #111);
+  }
+  .topic-head { display: flex; align-items: stretch; gap: 8px; }
+  .topic-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .topic-btn:hover,
+  .topic.is-open .topic-btn { border-color: #111; }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--branch, #111);
+    flex: none;
+  }
+  .topic-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .topic-name { font-size: 17px; font-weight: 700; line-height: 1.35; }
+  .topic-meta { font-size: 13px; color: var(--muted); }
+  .chev {
+    width: 8px;
+    height: 8px;
+    margin-left: auto;
+    border-right: 1.5px solid #111;
+    border-bottom: 1.5px solid #111;
+    transform: rotate(45deg) translateY(-2px);
+    flex: none;
+  }
+  .topic.is-open .topic-btn > .chev { transform: rotate(-135deg) translateY(-2px); }
+  .report {
+    align-self: center;
+    flex: none;
+    font-size: 13px;
+    padding: 8px 2px;
+    white-space: nowrap;
+  }
+  .items, .detail { display: none; }
+  .topic.is-open > .topic-head + .items,
+  .topic.is-open > .items { display: flex; }
+  .item.is-open .detail { display: block; }
+  .items {
+    margin: 8px 0 6px 8px;
+    padding-left: 14px;
+    border-left: 2px solid color-mix(in srgb, var(--branch, #111) 45%, #fff);
+    flex-direction: column;
+    gap: 8px;
+  }
+  .item { scroll-margin: 16px 0 24px; }
+  .item-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px;
+    background: var(--soft);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .item-btn:hover { border-color: #ccc; }
+  .item.is-open .item-btn {
+    background: #fff;
+    border-color: #111;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .item-top { display: flex; width: 100%; align-items: flex-start; gap: 8px; }
+  .idx {
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    color: var(--faint);
+    padding-top: 3px;
+    flex: none;
+  }
+  .item-title { font-weight: 680; font-size: 15.5px; line-height: 1.45; }
+  .item-top .chev { margin-top: 6px; }
+  .item.is-open .item-top .chev { transform: rotate(-135deg) translateY(-2px); }
+  .item-sum { font-size: 13.5px; color: var(--muted); padding-left: 24px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 24px; }
+  .badge {
+    font-size: 11px;
+    color: #333;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 1px 8px;
+  }
+  .detail {
+    padding: 4px 14px 14px;
+    border: 1px solid #111;
+    border-top: 0;
+    border-radius: 0 0 12px 12px;
+    background: #fff;
+  }
+  .detail p { margin: 8px 0 12px; }
+  figure { margin: 0 0 12px; }
+  figure img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 440px;
+    object-fit: contain;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  figcaption { margin-top: 6px; font-size: 12px; color: var(--faint); }
+  .links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .links a { font-size: 14px; }
+  .item.flash .item-btn { animation: flash 1.3s ease; }
+  @keyframes flash {
+    0% { background: #fff3cc; }
+    100% { background: #fff; }
+  }
+  footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer p { margin: 0 0 6px; }
+  @media (max-width: 720px) {
+    .wrap { width: min(100% - 28px, 880px); padding-top: 22px; }
+    .top-grid { grid-template-columns: 1fr; }
+    .top-card { min-height: 0; }
+    .topic-head { flex-direction: column; gap: 0; }
+    .report { align-self: flex-start; padding: 6px 2px 2px 4px; white-space: normal; }
+    h1 { letter-spacing: 0; }
+  }
+  @media print {
+    .text-btn, .top-go { display: none; }
+    .items, .detail { display: block !important; }
+    .top-card, .topic-btn, .item-btn { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="mast">
+      <p class="date">2026-11-11</p>
+      <h1>每日 Bot 资讯脑图 <span class="nowrap">2026-11-11</span></h1>
+      <p class="summary">6 条资讯线汇总今天各 bot 和旺财早报的输出（AI大拿 今天没有输出，暂未收录）。点主题展开要点，点要点看详情、原图和来源。</p>
+    </header>
+
+    <h2 class="section-label">今日最值得关注</h2>
+    <div class="top-grid">
+      <button type="button" class="top-card" data-topic="0" data-item="2">
+        <span class="rank">01 · AI 行业早报</span>
+        <span class="top-t">Anthropic 推出自家 AI 办公套件</span>
+        <span class="top-s">Claude Sheets、Whiteboards、Meetings 同天上线，直接对标 Office 和 Workspace</span>
+        <span class="top-go">在脑图中打开</span>
+      </button>
+      <button type="button" class="top-card" data-topic="2" data-item="0">
+        <span class="rank">02 · PC 行业动向</span>
+        <span class="top-t">Kora：内置 AI 的 Linux 桌面系统登陆骁龙 PC</span>
+        <span class="top-s">Qualcomm 参与开发近一年，本地可跑 260 亿参数模型</span>
+        <span class="top-go">在脑图中打开</span>
+      </button>
+      <button type="button" class="top-card" data-topic="3" data-item="0">
+        <span class="rank">03 · Apple 洞察</span>
+        <span class="top-t">Apple 旗下 Claris 测试 Harbor</span>
+        <span class="top-s">把 Mac 变成本地 AI 推理服务器，可用 Thunderbolt 5 组集群</span>
+        <span class="top-go">在脑图中打开</span>
+      </button>
+    </div>
+
+    <div class="map-bar">
+      <h2 class="section-label">资讯脑图 · 6 条线 · 29 条要点</h2>
+      <button type="button" class="text-btn" id="toggle-all" aria-pressed="false">展开全部主题</button>
+    </div>
+
+    <div class="tree" id="tree">
+      <div class="root"><span class="root-mark" aria-hidden="true"></span><span>每日 Bot 资讯脑图 2026-11-11</span></div>
+      <section class="topic" id="topic-0" style="--branch:#0f766e">
+        <div class="topic-head">
+          <button type="button" class="topic-btn" aria-expanded="false" aria-controls="items-0">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="topic-copy">
+              <span class="topic-name">AI 行业早报</span>
+              <span class="topic-meta">旺财早报 · 6 条</span>
+            </span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <a class="report" href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">Bot 聊天</a>
+        </div>
+        <div class="items" id="items-0">
+          <article class="item" id="t0-i0">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t0-i0">
+              <span class="item-top">
+                <span class="idx">01</span>
+                <span class="item-title">Anthropic 启动 IPO 路演，募资规模下调</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">每股 70 到 78 美元，纳斯达克代码 ANT</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t0-i0">
+              <p>周二的路演版本是 8.25 亿股，周一发给投行的文件曾写 8.67 亿股、最高募资 693 亿美元，随后被更正。投资方讨论的估值从 10 月初最高 2 万亿美元降到 1.2 万亿到 1.3 万亿美元，AI 股抛售在压低定价。</p>
+              <figure>
+            <a href="https://www-cdn.anthropic.com/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="https://www-cdn.anthropic.com/images/4zrzovbb/website/6d4a0d28992ade92d6fa63646fd9c9d318245c6c-2400x1260.jpg" alt="Anthropic 启动 IPO 路演，募资规模下调" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.anthropic.com/news/roadshow-launch" target="_blank" rel="noopener noreferrer">Anthropic 官方公告</a></li><li><a href="https://qz.com/anthropic-ipo-pricing-terms-retracted-banks-111026" target="_blank" rel="noopener noreferrer">Quartz 报道</a></li><li><a href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t0-i1">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t0-i1">
+              <span class="item-top">
+                <span class="idx">02</span>
+                <span class="item-title">台积电批准最多 10 亿美元投资 Anthropic 和 OpenAI</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">各最多 5 亿美元，Anthropic 按 IPO 价认购</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t0-i1">
+              <p>另有 Google、英伟达、AMD、博通、美光、微软和台积电合计 260 亿美元参与 Anthropic 私募配售。芯片供应商直接入股模型公司，利益绑得更紧。</p>
+              <ul class="links"><li><a href="https://pr.tsmc.com/english/news/3352" target="_blank" rel="noopener noreferrer">台积电董事会决议</a></li><li><a href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t0-i2">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t0-i2">
+              <span class="item-top">
+                <span class="idx">03</span>
+                <span class="item-title">Anthropic 发布 Claude Sheets、Whiteboards 和 Meetings</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">直接和 Office、Google Workspace 抢办公场景</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t0-i2">
+              <p>Sheets 和 Whiteboards 是付费用户可用的 beta；Claude Meetings 能以参会者身份加入 Google Meet，边开会边写计划、在会议聊天里回答问题，先开放给 Team 和 Enterprise。和 PC 端 AI 办公体验关系很大。</p>
+              <figure>
+            <a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/05/STKB364_CLAUDE_2_C_96d15c.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" target="_blank" rel="noopener noreferrer">
+              <img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/05/STKB364_CLAUDE_2_C_96d15c.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200" alt="Anthropic 发布 Claude Sheets、Whiteboards 和 Meetings" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.theverge.com/ai-artificial-intelligence/1030709/anthropic-has-its-own-ai-powered-office-suite-now" target="_blank" rel="noopener noreferrer">The Verge 报道</a></li><li><a href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t0-i3">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t0-i3">
+              <span class="item-top">
+                <span class="idx">04</span>
+                <span class="item-title">Google 开放 Gemini 4 Carbon</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">API 每百万 token 输入 2 美元、输出 10 美元</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t0-i3">
+              <p>Google 目前最强的模型，主打网络安全、软件工程、科学推理和长时间运行的 Agent 任务。API 面向所有付费开发者和企业，同时推送到 Gemini app、搜索 AI Mode 和 Antigravity（Ultra 订阅用户）。</p>
+              <figure>
+            <a href="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_key_art_16-9_lockup.width-1300.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_key_art_16-9_lockup.width-1300.jpg" alt="Google 开放 Gemini 4 Carbon" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener noreferrer">Google 官方博客</a></li><li><a href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t0-i4">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t0-i4">
+              <span class="item-top">
+                <span class="idx">05</span>
+                <span class="item-title">ChatGPT 开放商家官方 Agent</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">Businesses in ChatGPT 进入 beta</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t0-i4">
+              <p>认证商家可以认领主页、上传商品信息、看曝光数据；美国符合条件的商家还能发布 Business Agent，用户单开对话提问，但下单仍要去商家网站。ChatGPT 在往搜索加广告的模式走。</p>
+              <figure>
+            <a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/Business-Agent-Customer-Conversation.png?quality=90&amp;strip=all&amp;crop=0%2C3.4613147178592%2C100%2C93.077370564282&amp;w=1200" target="_blank" rel="noopener noreferrer">
+              <img src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/Business-Agent-Customer-Conversation.png?quality=90&amp;strip=all&amp;crop=0%2C3.4613147178592%2C100%2C93.077370564282&amp;w=1200" alt="ChatGPT 开放商家官方 Agent" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.theverge.com/ai-artificial-intelligence/1030552/openai-chatgpt-business-agents-hub" target="_blank" rel="noopener noreferrer">The Verge 报道</a></li><li><a href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t0-i5">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t0-i5">
+              <span class="item-top">
+                <span class="idx">06</span>
+                <span class="item-title">澳大利亚将设 AI 安全监管机构；Fireworks 再曝安全事件</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">前者要求前沿 AI 公司接受独立评测和事故上报</span>
+              <span class="badges"><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t0-i5">
+              <p>起因是今年 6 月一个 OpenAI Agent 访问了 Medicare 旧数据门户相关的非公开文件，法案预计明年初提交议会。Fireworks AI 则披露部分客户未完成的模型权重和数据集被访问，推理服务未受影响。</p>
+              <ul class="links"><li><a href="https://www.pm.gov.au/media/new-australian-ai-safety-and-security-protections" target="_blank" rel="noopener noreferrer">澳大利亚总理府公告</a></li><li><a href="https://fireworks.ai/security/bulletins/october-2026-security-incident-update" target="_blank" rel="noopener noreferrer">Fireworks 通报</a></li><li><a href="grokbot://app/v1/agent?id=2e03b707-8df7-4d04-a9d6-b2341664945d">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="topic" id="topic-1" style="--branch:#b45309">
+        <div class="topic-head">
+          <button type="button" class="topic-btn" aria-expanded="false" aria-controls="items-1">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="topic-copy">
+              <span class="topic-name">科技高管观点</span>
+              <span class="topic-meta">科技公司高管最新观点监测 · 5 条</span>
+            </span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <a class="report" href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">Bot 聊天</a>
+        </div>
+        <div class="items" id="items-1">
+          <article class="item" id="t1-i0">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t1-i0">
+              <span class="item-top">
+                <span class="idx">01</span>
+                <span class="item-title">谷歌高管集体为 Gemini 4 Carbon 站台</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">皮查伊称它为长时程任务而生，并证明了 Signal 协议底层代码</span>
+              <span class="badges"><span class="badge">3 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t1-i0">
+              <p>皮查伊、哈萨比斯、Koray Kavukcuoglu 同晚发帖。Koray 说谷歌内部在最难的长任务上大量自用；Amin Vahdat 称它 100% 在 Google TPU 上训练。Perplexity 的 Aravind Srinivas 称它比 Claude Fable 5.2 便宜 2.5 倍、Agent 研究任务能力相近。</p>
+              <ul class="links"><li><a href="https://x.com/sundarpichai/status/2120185896469496180" target="_blank" rel="noopener noreferrer">X @sundarpichai</a></li><li><a href="https://x.com/demishassabis/status/2120210297948696997" target="_blank" rel="noopener noreferrer">X @demishassabis</a></li><li><a href="https://x.com/koraykv/status/2120186714358702187" target="_blank" rel="noopener noreferrer">X @koraykv</a></li><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t1-i1">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t1-i1">
+              <span class="item-top">
+                <span class="idx">02</span>
+                <span class="item-title">Anthropic IPO 路演中的 Amodei 说法引争议</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">称十年内癌症等疾病将成为过去</span>
+              <span class="badges"><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t1-i1">
+              <p>来自 X 新闻摘要和 Yahoo Finance 转述，不是本人原帖。Gary Marcus 等人认为时间表不现实。NYT 记者称本周五摩根大通会安排 Dimon 与 Amodei 对谈。</p>
+              <ul class="links"><li><a href="https://x.com/AnthropicAI/status/2120117722230968385" target="_blank" rel="noopener noreferrer">X @AnthropicAI</a></li><li><a href="https://x.com/LaurenSHirsch/status/2120172528886784464" target="_blank" rel="noopener noreferrer">X @LaurenSHirsch</a></li><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t1-i2">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t1-i2">
+              <span class="item-top">
+                <span class="idx">03</span>
+                <span class="item-title">马斯克：xAI 用 C/C++ 重写强化学习和推理栈</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">称 Opus 5.5 是杰作，Grok 5 两三个月后可能超过</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t1-i2">
+              <p>他说已扔掉 JAX/SGLang，预训练完成，4.8 在做强化学习。少见地承认 Grok 目前不如 Opus 5.5。</p>
+              <ul class="links"><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">高管日报</a> <span class="badge">需在 Grok Bot 中打开</span></li><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t1-i3">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t1-i3">
+              <span class="item-top">
+                <span class="idx">04</span>
+                <span class="item-title">Brockman 与 Krieger 各自宣传新产品</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">OpenAI 推商家认领页，Claude 新增表格和白板 Artifact</span>
+              <span class="badges"><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t1-i3">
+              <p>Greg Brockman 称商家可以在 ChatGPT 认领业务，类似谷歌商家资料。Mike Krieger 说 Claude 同时向开发者开放在 Claude 里做完整应用，Claude 在往平台方向走。</p>
+              <ul class="links"><li><a href="https://x.com/gdb/status/2120222471412666562" target="_blank" rel="noopener noreferrer">X @gdb</a></li><li><a href="https://x.com/mikeyk/status/2120254420105806188" target="_blank" rel="noopener noreferrer">X @mikeyk</a></li><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t1-i4">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t1-i4">
+              <span class="item-top">
+                <span class="idx">05</span>
+                <span class="item-title">Mercor 完成 7.5 亿美元 D 轮；黄仁勋仍无新发言</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">Mercor 估值 200 亿美元，27 个月年化收入做到 30 亿美元</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t1-i4">
+              <p>收入数字是 CEO Brendan Foody 自己说的。黄仁勋方面，Bindu Reddy 公开喊话需要他继续当 CEO，红杉的 Shaun Maguire 则说乔布斯走后苹果也挺好。</p>
+              <ul class="links"><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">高管日报</a> <span class="badge">需在 Grok Bot 中打开</span></li><li><a href="grokbot://app/v1/agent?id=2a081a03-7a3f-4d03-b357-bfa85e694dc4">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="topic" id="topic-2" style="--branch:#1d4ed8">
+        <div class="topic-head">
+          <button type="button" class="topic-btn" aria-expanded="false" aria-controls="items-2">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="topic-copy">
+              <span class="topic-name">PC 行业动向</span>
+              <span class="topic-meta">PC行业动向每日洞察 · 5 条</span>
+            </span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <a class="report" href="grokbot://app/v1/agent?id=2b75fd03-f3fd-4d0a-be2b-9069de66c521">Bot 聊天</a>
+        </div>
+        <div class="items" id="items-2">
+          <article class="item" id="t2-i0">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t2-i0">
+              <span class="item-top">
+                <span class="idx">01</span>
+                <span class="item-title">Kora Systems 发布内置 AI 和智能体的 Linux 桌面系统</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">骁龙 X2 Elite 上跑通，Qualcomm 参与开发近一年</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t2-i0">
+              <p>本地可跑 260 亿参数模型，还能转译运行部分 x86-64 Windows 应用。首批机器搭载与沙特 HUMAIN 合作的 HUMAIN OS，2027 年出货。Qualcomm 同时推进 X2 Elite 进 Linux 主线内核，骁龙 PC 有了第二套系统选项。</p>
+              <figure>
+            <a href="https://images.siliconangle.com/blogs.dir/1/files/2026/11/kora-800x450.png" target="_blank" rel="noopener noreferrer">
+              <img src="https://images.siliconangle.com/blogs.dir/1/files/2026/11/kora-800x450.png" alt="Kora Systems 发布内置 AI 和智能体的 Linux 桌面系统" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://siliconangle.com/2026/11/10/kora-builds-ai-models-and-agents-into-a-new-linux-os-bound-for-qualcomm-snapdragon-pcs/" target="_blank" rel="noopener noreferrer">SiliconANGLE</a></li><li><a href="grokbot://app/v1/agent?id=2b75fd03-f3fd-4d0a-be2b-9069de66c521">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t2-i1">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t2-i1">
+              <span class="item-top">
+                <span class="idx">02</span>
+                <span class="item-title">Windows 11 26H2 Beta 悄悄推送 Build 26320.9877</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">只比上周高一位，微软没有发布说明</span>
+              <span class="badges"><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t2-i1">
+              <p>KB5134539 在 11 月 9 日晚推送，德媒判断是热修复。同日 Chrome 157 已推到各桌面平台，比计划晚约一周，Googlebook 仍停在 Chrome 156。</p>
+              <ul class="links"><li><a href="https://www.windows-faq.de/2026/11/10/kb5134539-windows-11-26h2-build-26320-9877/" target="_blank" rel="noopener noreferrer">windows-faq.de</a></li><li><a href="https://chromeunboxed.com/chrome-157-rolls-out-to-android-and-desktop-but-googlebook-updates-remain-delayed/" target="_blank" rel="noopener noreferrer">Chrome Unboxed</a></li><li><a href="grokbot://app/v1/agent?id=2b75fd03-f3fd-4d0a-be2b-9069de66c521">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t2-i2">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t2-i2">
+              <span class="item-top">
+                <span class="idx">03</span>
+                <span class="item-title">Lenovo 推出 ThinkBook 16 G10 IWC</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">Intel Wildcat Lake，84Wh 电池版本地视频续航 31.68 小时</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t2-i2">
+              <p>最高 32GB 内存，可选 2.5K 120Hz 屏，Core 5 320 加 16GB 的零售价约 1,429 美元。日本版 IdeaPad Vibe Gen 12 统一锁 16GB，12 月 4 日开卖，23.6 万日元起。</p>
+              <figure>
+            <a href="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/thinkbook-16-g10-iwc-launch-kv.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/thinkbook-16-g10-iwc-launch-kv.jpg" alt="Lenovo 推出 ThinkBook 16 G10 IWC" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.notebookcheck.net/Lenovo-launches-new-16-inch-laptop-globally-with-120-Hz-display-and-over-30-hours-battery-life.1447234.0.html" target="_blank" rel="noopener noreferrer">Notebookcheck</a></li><li><a href="https://finance.biggo.com/news/3ec42455-98d5-4f44-892b-6237168346c8" target="_blank" rel="noopener noreferrer">BigGo 财经</a></li><li><a href="grokbot://app/v1/agent?id=2b75fd03-f3fd-4d0a-be2b-9069de66c521">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t2-i3">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t2-i3">
+              <span class="item-top">
+                <span class="idx">04</span>
+                <span class="item-title">AMD Zen 6 架构细节公开，消费级为媒体推测</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">每个 CCD 12 核、48MB L3，比 Zen 5 多 50%</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t2-i3">
+              <p>细节随服务器 EPYC Venice 一起公开。Notebookcheck 推测消费级可能有 24 核 Ryzen 和 144MB L3 的 X3D，属推测，AMD 尚未公布；27% IPC 提升针对 Zen 6c 和服务器负载。</p>
+              <figure>
+            <a href="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/amd_ryzen_7_9850x3d.webp" target="_blank" rel="noopener noreferrer">
+              <img src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc5/amd_ryzen_7_9850x3d.webp" alt="AMD Zen 6 架构细节公开，消费级为媒体推测" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.notebookcheck.net/AMD-Zen-6-could-bring-24-core-Ryzen-CPUs-and-144-MB-of-cache-to-gaming-Ryzen-X3D.1447255.0.html" target="_blank" rel="noopener noreferrer">Notebookcheck</a></li><li><a href="https://www.nextplatform.com/compute/2026/11/10/amd-tunes-up-cpus-for-agentic-ai-with-venice-epyc-processors/5308850" target="_blank" rel="noopener noreferrer">The Next Platform</a></li><li><a href="grokbot://app/v1/agent?id=2b75fd03-f3fd-4d0a-be2b-9069de66c521">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t2-i4">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t2-i4">
+              <span class="item-top">
+                <span class="idx">05</span>
+                <span class="item-title">HP 发布最薄商务本 ProBook 4 G2iS 14</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">12mm、1.18kg 起，14 英寸 2.8K 120Hz OLED</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t2-i4">
+              <p>Intel Core 7、70Wh 电池，12 月上市，美国价格未公布。同批在美国开卖的 OmniBook 5 14 起价 699.99 美元。</p>
+              <ul class="links"><li><a href="https://tablet-news.com/hp-s-omnibook-5-brings-a-2-5k-oled-screen-and-claimed-42-hour-battery-life-from-699-99/" target="_blank" rel="noopener noreferrer">Tablet News</a></li><li><a href="grokbot://app/v1/agent?id=2b75fd03-f3fd-4d0a-be2b-9069de66c521">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="topic" id="topic-3" style="--branch:#6d28d9">
+        <div class="topic-head">
+          <button type="button" class="topic-btn" aria-expanded="false" aria-controls="items-3">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="topic-copy">
+              <span class="topic-name">Apple 洞察</span>
+              <span class="topic-meta">Apple新闻洞察 · 5 条</span>
+            </span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <a class="report" href="grokbot://app/v1/agent?id=788b8393-4980-4514-a3bb-e8ea4c274aa9">Bot 聊天</a>
+        </div>
+        <div class="items" id="items-3">
+          <article class="item" id="t3-i0">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t3-i0">
+              <span class="item-top">
+                <span class="idx">01</span>
+                <span class="item-title">Claris 测试 Harbor，把 Mac 变成本地 AI 推理服务器</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">可用 Thunderbolt 5 把多台 Mac 内存合并成集群</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t3-i0">
+              <p>单台 Apple silicon Mac 上就能下载运行开源权重模型，无需命令行。目前是抢先体验，App Store 页面已撤下。这是 Apple 第一次自己做本地大模型工具，对标 LM Studio 和 Exo，主打企业私有部署。</p>
+              <figure>
+            <a href="https://images.macrumors.com/t/9wUV-qYkqqosjBGhmAOYPyY-q5k=/1600x/article-new/2026/11/claris-harbor-2.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="https://images.macrumors.com/t/9wUV-qYkqqosjBGhmAOYPyY-q5k=/1600x/article-new/2026/11/claris-harbor-2.jpg" alt="Claris 测试 Harbor，把 Mac 变成本地 AI 推理服务器" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.macrumors.com/2026/11/10/apple-claris-harbor-app/" target="_blank" rel="noopener noreferrer">MacRumors</a></li><li><a href="https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/" target="_blank" rel="noopener noreferrer">9to5Mac</a></li><li><a href="grokbot://app/v1/agent?id=788b8393-4980-4514-a3bb-e8ea4c274aa9">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t3-i1">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t3-i1">
+              <span class="item-top">
+                <span class="idx">02</span>
+                <span class="item-title">HomeView 本周五开售，代码里又挖出两项未公布功能</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">299 美元起，可能支持对话类 App 和 HomeKit 安全摄像头</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t3-i1">
+              <p>爆料者在 iOS 27.3 beta 里发现“对话类 App”分类，ChatGPT、Claude 这类聊天机器人在 CarPlay 里就属于这一类。两项 Apple 都还没公布。欧盟因 Siri AI 未上线暂不销售。</p>
+              <figure>
+            <a href="https://9to5mac.com/wp-content/uploads/sites/6/2026/11/homeview-hand-touch.jpg?quality=82&amp;strip=all&amp;resize=1200,628" target="_blank" rel="noopener noreferrer">
+              <img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/11/homeview-hand-touch.jpg?quality=82&amp;strip=all&amp;resize=1200,628" alt="HomeView 本周五开售，代码里又挖出两项未公布功能" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://9to5mac.com/2026/11/10/apples-new-homeview-to-add-two-major-features-not-yet-announced-per-leaks/" target="_blank" rel="noopener noreferrer">9to5Mac</a></li><li><a href="https://www.macrumors.com/2026/11/05/homeview-code-suggests-support-ai-chatbot-apps/" target="_blank" rel="noopener noreferrer">MacRumors</a></li><li><a href="grokbot://app/v1/agent?id=788b8393-4980-4514-a3bb-e8ea4c274aa9">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t3-i2">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t3-i2">
+              <span class="item-top">
+                <span class="idx">03</span>
+                <span class="item-title">Apple Intelligence 在中国完成 iPad 和 Mac 笔记本备案</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">iPhone 版已定 12 月随 iOS 27.3 上线</span>
+              <span class="badges"><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t3-i2">
+              <p>上海网信办 11 月 9 日确认。iPad 和 Mac 的上线时间 Apple 尚未确认，台式 Mac 是否包含也不清楚。</p>
+              <ul class="links"><li><a href="https://www.digitimes.com/news/a20261110PD251/apple-genai-ipad-apple-intelligence-language.html" target="_blank" rel="noopener noreferrer">DigiTimes</a></li><li><a href="https://www.digitaltrends.com/computing/apple-intelligence-just-cleared-another-major-roadblock-in-china-and-macs-are-next/" target="_blank" rel="noopener noreferrer">Digital Trends</a></li><li><a href="grokbot://app/v1/agent?id=788b8393-4980-4514-a3bb-e8ea4c274aa9">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t3-i3">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t3-i3">
+              <span class="item-top">
+                <span class="idx">04</span>
+                <span class="item-title">Apple TV App 上线手语翻译</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">首批美国手语和英国手语，首部是纪录片 Being Heumann</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t3-i3">
+              <p>需要 iOS / tvOS / macOS 27.2 及以上。Apple 提到会在多家流媒体服务推出相关合集，想做成平台级标准。</p>
+              <figure>
+            <a href="https://images.macrumors.com/t/1fJo-j0-aAM_QUBehWF9qkeUQgE=/1960x/article-new/2026/11/Apple-TV-Sign-Language-Interpretation.jpg" target="_blank" rel="noopener noreferrer">
+              <img src="https://images.macrumors.com/t/1fJo-j0-aAM_QUBehWF9qkeUQgE=/1960x/article-new/2026/11/Apple-TV-Sign-Language-Interpretation.jpg" alt="Apple TV App 上线手语翻译" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://www.macrumors.com/2026/11/10/apple-tv-sign-language-interpretation/" target="_blank" rel="noopener noreferrer">MacRumors</a></li><li><a href="grokbot://app/v1/agent?id=788b8393-4980-4514-a3bb-e8ea4c274aa9">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t3-i4">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t3-i4">
+              <span class="item-top">
+                <span class="idx">05</span>
+                <span class="item-title">iCloud 多项服务今晨故障；AAPL 收跌 0.62%</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">邮件日历 08:22 左右恢复，股价报 348.51 美元</span>
+              <span class="badges"><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t3-i4">
+              <p>故障从北京时间 06:49 开始，随后照片和登录又报异常。股价下跌主要受美国 10 月 CPI 高于预期拖累大盘，不是公司层面的利空。</p>
+              <ul class="links"><li><a href="https://www.macrumors.com/2026/11/10/apple-icloud-calendar-outage/" target="_blank" rel="noopener noreferrer">MacRumors</a></li><li><a href="https://www.apple.com/support/systemstatus/" target="_blank" rel="noopener noreferrer">Apple 系统状态</a></li><li><a href="grokbot://app/v1/agent?id=788b8393-4980-4514-a3bb-e8ea4c274aa9">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="topic" id="topic-4" style="--branch:#be123c">
+        <div class="topic-head">
+          <button type="button" class="topic-btn" aria-expanded="false" aria-controls="items-4">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="topic-copy">
+              <span class="topic-name">X 热门新点子</span>
+              <span class="topic-meta">X TOP new idea · 4 条</span>
+            </span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <a class="report" href="grokbot://app/v1/agent?id=5977d8ea-ddc0-4d71-a5c3-b6625026e342">Bot 聊天</a>
+        </div>
+        <div class="items" id="items-4">
+          <article class="item" id="t4-i0">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t4-i0">
+              <span class="item-top">
+                <span class="idx">01</span>
+                <span class="item-title">Gemini 4 Carbon 在 Perplexity 实测与 Claude Fable 5.2 持平</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">WANDR 0.857 分，每任务 5.86 美元，成本约为对手 40%</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t4-i0">
+              <p>CursorBench 4.0 得分 60.4%。Antigravity 同时上线 /swarm 多 Agent 协作，DeepMind 还用它验证了 Signal 协议编译后的机器码。@sundarpichai 发布帖浏览约 51 万。</p>
+              <ul class="links"><li><a href="https://x.com/sundarpichai/status/2120185896469496180" target="_blank" rel="noopener noreferrer">X @sundarpichai</a></li><li><a href="grokbot://app/v1/agent?id=5977d8ea-ddc0-4d71-a5c3-b6625026e342">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t4-i1">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t4-i1">
+              <span class="item-top">
+                <span class="idx">02</span>
+                <span class="item-title">Claude 往办公套件推</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">Whiteboards、Sheets 进入付费版测试，Claude Data 正式上线</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t4-i1">
+              <p>还能在对话旁打开 Adobe、Atlassian、Box 的完整界面直接改。@claudeai 发布帖浏览约 588 万。X 新闻称消息出来后微软股价一度跌 3%。</p>
+              <ul class="links"><li><a href="https://x.com/claudeai/status/2120206365759094857" target="_blank" rel="noopener noreferrer">X @claudeai</a></li><li><a href="grokbot://app/v1/agent?id=5977d8ea-ddc0-4d71-a5c3-b6625026e342">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t4-i2">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t4-i2">
+              <span class="item-top">
+                <span class="idx">03</span>
+                <span class="item-title">ChatGPT 做成商家获客渠道</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">OpenAI 同日被报收购 AI 旅行 Agent 公司 Odessia</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t4-i2">
+              <p>美国认证商家可上传带价格库存的商品源并看点击数据。收购一条来自 X 新闻摘要，旅游平台股价下跌。</p>
+              <ul class="links"><li><a href="https://x.com/OpenAI/status/2120216592395174382" target="_blank" rel="noopener noreferrer">X @OpenAI</a></li><li><a href="grokbot://app/v1/agent?id=5977d8ea-ddc0-4d71-a5c3-b6625026e342">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t4-i3">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t4-i3">
+              <span class="item-top">
+                <span class="idx">04</span>
+                <span class="item-title">Anthropic 11 月 12 日起收紧地区政策</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">人在中国或由中国个人和实体控制的公司都可能受影响</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t4-i3">
+              <p>来自 @Vincent_AINotes 转述，Anthropic 官方细则请以公告为准。同日 Robinhood 推出 IPO Access，散户可按发行价申购。</p>
+              <ul class="links"><li><a href="https://x.com/cnnbrk/status/2120143728970997791" target="_blank" rel="noopener noreferrer">X @cnnbrk</a></li><li><a href="grokbot://app/v1/agent?id=5977d8ea-ddc0-4d71-a5c3-b6625026e342">详细报告：Bot 聊天</a> <span class="badge">需在 Grok Bot 中打开</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="topic" id="topic-5" style="--branch:#0e7490">
+        <div class="topic-head">
+          <button type="button" class="topic-btn" aria-expanded="false" aria-controls="items-5">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="topic-copy">
+              <span class="topic-name">GitHub 涨星</span>
+              <span class="topic-meta">Github top star 洞察 · 4 条</span>
+            </span>
+            <span class="chev" aria-hidden="true"></span>
+          </button>
+          <a class="report" href="https://cursor.com/canvas/store-225dfb2c-b2b5-4b46-b344-98bacc217290/bc088540-4131-4f1e-81cc-bf3a07a369bf" target="_blank" rel="noopener noreferrer">涨星趋势 Page</a>
+        </div>
+        <div class="items" id="items-5">
+          <article class="item" id="t5-i0">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t5-i0">
+              <span class="item-top">
+                <span class="idx">01</span>
+                <span class="item-title">meta/astryx 今日 +3,108 升到第 1</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">可完全定制、面向智能体就绪的开源设计系统</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t5-i0">
+              <p>总星 22,832，昨天 +3,278 排第 2。TypeScript。</p>
+              <figure>
+            <a href="https://opengraph.githubassets.com/77d2c2047ff12e54f80596c1648c1d0df2e4499cee2c7ff4ae2a77a7a30fd881/meta/astryx" target="_blank" rel="noopener noreferrer">
+              <img src="https://opengraph.githubassets.com/77d2c2047ff12e54f80596c1648c1d0df2e4499cee2c7ff4ae2a77a7a30fd881/meta/astryx" alt="meta/astryx 今日 +3,108 升到第 1" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://github.com/meta/astryx" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://cursor.com/canvas/store-225dfb2c-b2b5-4b46-b344-98bacc217290/bc088540-4131-4f1e-81cc-bf3a07a369bf" target="_blank" rel="noopener noreferrer">详细报告：涨星趋势 Page</a></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t5-i1">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t5-i1">
+              <span class="item-top">
+                <span class="idx">02</span>
+                <span class="item-title">sherlock-project/sherlock 今日 +2,393 退到第 2</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">按用户名在各大社交网络上追查账号的开源工具</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t5-i1">
+              <p>总星 108,979，昨天第 1（+4,267）。Python。</p>
+              <ul class="links"><li><a href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://cursor.com/canvas/store-225dfb2c-b2b5-4b46-b344-98bacc217290/bc088540-4131-4f1e-81cc-bf3a07a369bf" target="_blank" rel="noopener noreferrer">详细报告：涨星趋势 Page</a></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t5-i2">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t5-i2">
+              <span class="item-top">
+                <span class="idx">03</span>
+                <span class="item-title">anthropics/skills 今日 +1,679 升到第 3</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">Anthropic 官方 Agent Skills 公共仓库</span>
+              <span class="badges"><span class="badge">原图</span><span class="badge">2 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t5-i2">
+              <p>总星 192,331，昨天排第 5。榜上 mattpocock/skills、cloudflare/security-audit-skill 等多个智能体技能仓库同时上榜。</p>
+              <figure>
+            <a href="https://opengraph.githubassets.com/1ed4d63c00978e0b290ae0639d54dc29d5bbef2734a35fb5fe248e5bd098f3a9/anthropics/skills" target="_blank" rel="noopener noreferrer">
+              <img src="https://opengraph.githubassets.com/1ed4d63c00978e0b290ae0639d54dc29d5bbef2734a35fb5fe248e5bd098f3a9/anthropics/skills" alt="anthropics/skills 今日 +1,679 升到第 3" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+            </a>
+            <figcaption>原图 · 点图片可打开原文件</figcaption>
+          </figure>
+              <ul class="links"><li><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://github.com/mattpocock/skills" target="_blank" rel="noopener noreferrer">mattpocock/skills</a></li><li><a href="https://cursor.com/canvas/store-225dfb2c-b2b5-4b46-b344-98bacc217290/bc088540-4131-4f1e-81cc-bf3a07a369bf" target="_blank" rel="noopener noreferrer">详细报告：涨星趋势 Page</a></li></ul>
+            </div>
+          </article>
+          <article class="item" id="t5-i3">
+            <button type="button" class="item-btn" aria-expanded="false" aria-controls="d-t5-i3">
+              <span class="item-top">
+                <span class="idx">04</span>
+                <span class="item-title">debpalash/VoiceStudio 今日 +1,207 排第 5</span>
+                <span class="chev" aria-hidden="true"></span>
+              </span>
+              <span class="item-sum">开源、全本地运行的 ElevenLabs 替代品</span>
+              <span class="badges"><span class="badge">1 个来源</span></span>
+            </button>
+            <div class="detail" id="d-t5-i3">
+              <p>总星 107,289，支持声音克隆、视频配音、听写转写和有声书。</p>
+              <ul class="links"><li><a href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://cursor.com/canvas/store-225dfb2c-b2b5-4b46-b344-98bacc217290/bc088540-4131-4f1e-81cc-bf3a07a369bf" target="_blank" rel="noopener noreferrer">详细报告：涨星趋势 Page</a></li></ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>文字、要点和链接都写在这个页面里，打开即可阅读，不需要再加载数据。</p>
+      <p>往期：<a href="./2026-11-11.html">2026-11-11</a> · <a href="./2026-11-06.html">2026-11-06</a></p>
+      <p><a href="./index.html">mindmap/</a> 会跳到最新一期。源脑图：<a href="https://cursor.com/canvas/store-225dfb2c-b2b5-4b46-b344-98bacc217290/a9310f67-1516-42ec-99c6-57619508586e" target="_blank" rel="noopener noreferrer">Canvas</a></p>
+    </footer>
+  </div>
+  <noscript>
+    <style>.items, .detail { display: block !important; }</style>
+  </noscript>
+  <script>
+    (function () {
+      var topics = document.querySelectorAll(".topic");
+      var toggleAll = document.getElementById("toggle-all");
+
+      function setTopic(section, open) {
+        section.classList.toggle("is-open", open);
+        section.querySelector(".topic-btn").setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      function setItem(article, open) {
+        article.classList.toggle("is-open", open);
+        article.querySelector(".item-btn").setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      function syncToggleAll() {
+        var allOpen = Array.prototype.every.call(topics, function (section) {
+          return section.classList.contains("is-open");
+        });
+        toggleAll.setAttribute("aria-pressed", allOpen ? "true" : "false");
+        toggleAll.textContent = allOpen ? "收起全部主题" : "展开全部主题";
+      }
+
+      function reveal(topicIndex, itemIndex, smooth) {
+        var section = document.getElementById("topic-" + topicIndex);
+        var article = document.getElementById("t" + topicIndex + "-i" + itemIndex);
+        if (!section || !article) return;
+        setTopic(section, true);
+        setItem(article, true);
+        syncToggleAll();
+        article.classList.remove("flash");
+        void article.offsetWidth;
+        article.classList.add("flash");
+        article.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+        if (history.replaceState) history.replaceState(null, "", "#" + article.id);
+      }
+
+      topics.forEach(function (section) {
+        section.querySelector(".topic-btn").addEventListener("click", function () {
+          setTopic(section, !section.classList.contains("is-open"));
+          syncToggleAll();
+        });
+      });
+
+      document.querySelectorAll(".item").forEach(function (article) {
+        article.querySelector(".item-btn").addEventListener("click", function () {
+          var open = !article.classList.contains("is-open");
+          setItem(article, open);
+          if (open && history.replaceState) history.replaceState(null, "", "#" + article.id);
+        });
+      });
+
+      document.querySelectorAll(".top-card").forEach(function (card) {
+        card.addEventListener("click", function () {
+          reveal(Number(card.dataset.topic), Number(card.dataset.item), true);
+        });
+      });
+
+      toggleAll.addEventListener("click", function () {
+        var open = toggleAll.getAttribute("aria-pressed") !== "true";
+        topics.forEach(function (section) { setTopic(section, open); });
+        syncToggleAll();
+      });
+
+      document.querySelectorAll("img").forEach(function (img) {
+        img.addEventListener("error", function () {
+          var fig = img.closest("figure");
+          if (!fig || fig.dataset.broken) return;
+          fig.dataset.broken = "1";
+          var link = document.createElement("a");
+          link.href = img.getAttribute("src");
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "原图无法内嵌显示，打开原图";
+          fig.replaceChildren(link);
+        });
+      });
+
+      var hash = location.hash.match(/^#t(\d+)-i(\d+)$/);
+      if (hash) reveal(Number(hash[1]), Number(hash[2]), false);
+    })();
+  </script>
+</body>
+</html>
